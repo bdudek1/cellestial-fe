@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {
   MapContainer,
@@ -31,12 +31,11 @@ const customIcon = new L.Icon({
 
 export type Position = { lat: number; lng: number };
 export interface MapProps {
-    position: Position;
-    setPosition: (position: Position) => void;
+  position: Position;
+  setPosition: (position: Position) => void;
 }
 
-const PositionMarker = ({position, setPosition}: MapProps) => {
-
+const PositionMarker = ({ position, setPosition }: MapProps) => {
   useMapEvents({
     click: (e) => {
       setPosition(e.latlng);
@@ -50,14 +49,14 @@ const PositionMarker = ({position, setPosition}: MapProps) => {
   );
 };
 
-export const Map = ({position, setPosition}: MapProps) => {
+export const Map = ({ position, setPosition }: MapProps) => {
   return (
     <StyledMapContainer center={[52, 21]} zoom={6}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      <PositionMarker position={position} setPosition={setPosition}/>
+      <PositionMarker position={position} setPosition={setPosition} />
     </StyledMapContainer>
   );
 };
