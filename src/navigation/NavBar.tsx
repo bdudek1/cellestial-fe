@@ -1,14 +1,5 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const ActiveNavLink = styled(Nav.Link)`
-  &.active {
-    color: white; // Change the color of the active link
-    background-color: #0000ff; // Example background color for the active link
-  }
-`;
 
 export const NavBar = () => {
   return (
