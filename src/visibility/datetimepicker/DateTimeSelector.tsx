@@ -46,6 +46,7 @@ export const DateTimeSelector = ({
         value={value}
         onChange={onChange}
         format={'y-MM-dd hh:mm:ss a'}
+        disableClock={true}
         validation={validation}
       />
       {validation && <StyledErrorLabel>{validation}</StyledErrorLabel>}
