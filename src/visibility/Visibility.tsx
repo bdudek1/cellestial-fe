@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Map } from './map/Map';
 import { DateTimeSelector, Value } from './datetimepicker/DateTimeSelector';
 import { Position } from './map/Map';
+import { isDateValid } from '../validation/validators';
 
 const StyledHeader = styled.h2`
   text-align: center;
@@ -12,6 +13,15 @@ const StyledHeader = styled.h2`
 export const Visibility = () => {
   const [position, setPosition] = useState<Position>({ lat: 52, lng: 21 });
   const [dateTime, setDateTime] = useState<Value>(new Date());
+  const [dateValidation, setDateValidation] = useState<string>('')
+
+  useEffect(() => {
+    if (isDateValid(dateTime)) {
+      setDateValidation('')
+    } else {
+      setDateValidation('Date cannot be further than 2 weeks!')
+    }
+  }, [dateTime])
 
   return (
     <Container fluid>
@@ -20,10 +30,10 @@ export const Visibility = () => {
       <Row className="justify-content-end mt-3 p-1">
         <Col xxl={7} lg={6} sm={1} xs={0} />
         <Col xxl={3} lg={4} sm={7} xs={12}>
-          <DateTimeSelector value={dateTime} onChange={setDateTime} />
+          <DateTimeSelector value={dateTime} onChange={setDateTime} validation={dateValidation} />
         </Col>
         <Col xxl={2} lg={2} sm={4} xs={12}>
-          <Button style={{ marginTop: '0.5rem' }}>
+          <Button style={{ marginTop: '0.5rem' }} disabled={!!dateValidation}>
             Get Celestial Weather!
           </Button>
         </Col>
