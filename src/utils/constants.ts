@@ -1,0 +1,1 @@
+export const LARGE_PHONE_WIDTH = '992px';
