@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Map } from './map/Map';
@@ -23,7 +23,9 @@ export const Visibility = () => {
           <DateTimeSelector value={dateTime} onChange={setDateTime} />
         </Col>
         <Col xxl={2} lg={2} sm={4} xs={12}>
-          <Button style={{ marginTop: '0.5rem' }}>Get Celestial Weather!</Button>
+          <Button style={{ marginTop: '0.5rem' }}>
+            Get Celestial Weather!
+          </Button>
         </Col>
       </Row>
     </Container>
