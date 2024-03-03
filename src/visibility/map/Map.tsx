@@ -14,10 +14,11 @@ const StyledMapContainer = styled(MapContainer)`
   height: 40vh;
   width: 800px;
   margin: 0 auto;
-  border-radius: 30px;
+  border-radius: 15px;
+  z-index: 0;
 
   @media (max-width: 992px) {
-    width: 95%;
+    width: 97%;
   }
 `;
 
