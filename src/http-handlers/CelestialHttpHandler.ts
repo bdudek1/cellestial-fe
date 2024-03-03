@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CelestialWeatherDTO } from '../dto/CelestialWeatherDTO';
 
-const apiUrl = 'https://167.235.251.107:8000';
+const apiUrl = 'https://darkorbit.lol:8000';
 
 export const getCelestialData = async (
   latitude: number,
