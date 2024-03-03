@@ -11,7 +11,11 @@ type ValuePiece = Date | null;
 
 export type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-export interface DateTimeSelectorProps {
+interface ValidatedDateTimePickerProps {
+  validation: string;
+ }
+
+export interface DateTimeSelectorProps extends ValidatedDateTimePickerProps {
   value: Value;
   onChange: (date: Value) => void;
 }
@@ -21,18 +25,30 @@ const StyledLabel = styled.label`
   color: gray;
 `;
 
+const StyledErrorLabel = styled.label`
+  font-size: 65%;
+  color: red;
+`;
+
+const StyledDateTimePicker = styled(DateTimePicker)<ValidatedDateTimePickerProps>`
+  color: ${props => props.validation ? 'red' : 'inherit'};
+`
+
 export const DateTimeSelector = ({
   value,
   onChange,
+  validation,
 }: DateTimeSelectorProps) => {
   return (
     <Stack>
       <StyledLabel>Select star gazing date</StyledLabel>
-      <DateTimePicker
+      <StyledDateTimePicker
         value={value}
         onChange={onChange}
         format={'y-MM-dd hh:mm:ss a'}
+        validation={validation}
       />
+      {validation && <StyledErrorLabel>{validation}</StyledErrorLabel>}
     </Stack>
   );
 };
